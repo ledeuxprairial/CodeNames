@@ -4,14 +4,28 @@
 <meta charset="UTF-8">
 <title>codenames</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+<style type="text/css">
+<!--
+table{
+  width: 100%;
+}
+#button_wrapper{
+  text-align:center;
+}
+-->
+</style>
 </head>
 
 <body>
 <main>
+
 </main>
+<div id="main">
+</div>
+<div id="button_wrapper">
+</div>
 
 <script>
-  console.log('GitHub Pages Sample');
   makeTable();
   makeButton();
   setWord();
@@ -19,13 +33,15 @@
   
   function makeTable(){
     var table = document.createElement("table");
-    document.body.appendChild(table);
+    //table.style.width="98%";
+    document.getElementById("main").appendChild(table);
     for(i=0;i<5;i++){
       var row = table.insertRow(-1);
       for(j=0;j<5;j++){
         var td = row.insertCell(-1);
         td.id = "no" + (i * 5 + j);
         td.innerHTML = "あ";
+        td.style.textAlign= "center";
         td.onclick = function(){this.innerHTML="　"}
         
       }
@@ -38,7 +54,8 @@
     btn.value = 'shuffle';
     btn.name = 'shuffleButton';
     btn.onclick = function(){setWord(); setColor();};
-    document.body.appendChild(btn);
+    document.getElementById("button_wrapper").appendChild(btn);
+    //document.body.appendChild(btn);
   }
   
   function setWord(){
