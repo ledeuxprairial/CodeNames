@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" name="viewpoint" content="width=device-width">
 <title>codenames</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
 <style type="text/css">
 <!--
 table{
-  width: 100%;
+  width: 80vw;
+  height: 80vh;
+}
+
+td{
+  text-align: center;
+}
+#table_wrapper{
+  text-align:center;
 }
 #button_wrapper{
   text-align:center;
@@ -20,7 +28,7 @@ table{
 <main>
 
 </main>
-<div id="main">
+<div id="table_wrapper">
 </div>
 <div id="button_wrapper">
 </div>
@@ -34,14 +42,13 @@ table{
   function makeTable(){
     var table = document.createElement("table");
     //table.style.width="98%";
-    document.getElementById("main").appendChild(table);
+    document.getElementById("table_wrapper").appendChild(table);
     for(i=0;i<5;i++){
       var row = table.insertRow(-1);
       for(j=0;j<5;j++){
         var td = row.insertCell(-1);
         td.id = "no" + (i * 5 + j);
         td.innerHTML = "あ";
-        td.style.textAlign= "center";
         td.onclick = function(){this.innerHTML="　"}
         
       }
