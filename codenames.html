@@ -12,12 +12,117 @@
 </main>
 
 <script>
-console.log('GitHub Pages Sample');
-  document.body.appendChild(table);
-  for(i=0;i<5;i++){
-    for(j=0;j<5;j){
-      table.insertRow(-1);
+  console.log('GitHub Pages Sample');
+  makeTable();
+  makeButton();
+  setWord();
+  setColor();
+  
+  function makeTable(){
+    var table = document.createElement("table");
+    document.body.appendChild(table);
+    for(i=0;i<5;i++){
+      var row = table.insertRow(-1);
+      for(j=0;j<5;j++){
+        var td = row.insertCell(-1);
+        td.id = "no" + (i * 5 + j);
+        td.innerHTML = "あ";
+        td.onclick = function(){this.innerHTML="　"}
+        
+      }
     }
+  }
+  
+  function makeButton(){
+    var btn = document.createElement('input');
+    btn.type = 'button';
+    btn.value = 'shuffle';
+    btn.name = 'shuffleButton';
+    btn.onclick = function(){setWord(); setColor();};
+    document.body.appendChild(btn);
+  }
+  
+  function setWord(){
+    var wordArray = [
+    "あ",
+    "い",
+    "う",
+    "え",
+    "お",
+    "か",
+    "き",
+    "く",
+    "け",
+    "こ",
+    "さ",
+    "し",
+    "す",
+    "せ",
+    "そ",
+    "た",
+    "ち",
+    "つ",
+    "て",
+    "と",
+    "な",
+    "に",
+    "ぬ",
+    "ね",
+    "の",
+    "は",
+    "ひ",
+    "ふ",
+    "へ",
+    "ほ",
+    "ま",
+    "み",
+    "む",
+    "め",
+    "も",
+    "や",
+    "ゆ",
+    "よ",
+    "ら",
+    "り",
+    "る",
+    "れ",
+    "ろ",
+    "わ",
+    "を",
+    "ん"
+    ];
+    
+    for(i=0;i<5*5;i++){
+      var index = Math.floor(Math.random() * wordArray.length);
+      var word = wordArray[index];
+      wordArray.splice(index,1);
+      var td = document.getElementById("no" + i);
+      td.innerHTML = word;
+    }
+  }
+  
+  function setColor(){
+    var noArray = [];
+    for(i=0;i<5*5;i++){
+      noArray.push(i);
+    }
+    setTdColor(noArray, 9, "#00bfff");
+    setTdColor(noArray, 8, "#ff69b4");
+    setTdColor(noArray, 1, "#d3d3d3");
+    setTdColor(noArray, 7, "#ffffff");
+    
+  }
+  
+  function setTdColor(array, times, color){
+    for(i=0;i<times;i++){
+      var index = Math.floor(Math.random() * array.length);
+      var no = array[index];
+      array.splice(index,1);
+      var td = document.getElementById("no" + no);
+      td.bgColor = color;
+    }
+  }
+  
 </script>
 </body>
 </html>
