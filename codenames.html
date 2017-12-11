@@ -8,13 +8,21 @@
 <!--
 table{
   width: 100vw;
-  height: 80vh;
+  height: 70vh;
 }
 
 td{
   text-align: center;
   font-weight: bold;
   font-size: 24px;
+}
+
+input{
+  width: 30vw;
+  height: 10vh
+  font-weight: bold;
+  font-size: 24px;
+  border: 2px double;
 }
 #table_wrapper{
   text-align:center;
@@ -59,9 +67,9 @@ td{
   
   function makeButton(){
     var btn = document.createElement('input');
-    btn.type = 'button';
-    btn.value = 'shuffle';
-    btn.name = 'shuffleButton';
+    btn.type = "button";
+    btn.value = "shuffle";
+    btn.name = "shuffleButton";
     btn.onclick = function(){setWord(); setColor();};
     document.getElementById("button_wrapper").appendChild(btn);
     //document.body.appendChild(btn);
